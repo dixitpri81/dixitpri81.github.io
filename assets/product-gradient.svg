@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Product Thinking gradient icon">
+  <title>Product Thinking — Gradient icon, made in an SVGator-style animation</title>
+  <defs>
+    <linearGradient id="g" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#60A5FA">
+        <animate attributeName="stop-color" values="#60A5FA;#F472B6;#60A5FA" dur="5s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#F472B6">
+        <animate attributeName="stop-color" values="#F472B6;#60A5FA;#F472B6" dur="5s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="2.4" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 .55 0" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <style>
+    .orb{transform-origin:32px 32px;animation:spin 7s linear infinite}
+    .line{fill:none;stroke:url(#g);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;filter:url(#glow);stroke-dasharray:160;animation:dash 4.8s ease-in-out infinite}
+    .accent{stroke-width:3;animation-delay:.35s}
+    .dot{fill:url(#g);transform-origin:32px 32px;animation:pulse 2.7s ease-in-out infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes dash{0%,100%{stroke-dashoffset:0}50%{stroke-dashoffset:42}}
+    @keyframes pulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.08);opacity:.65}}
+  </style>
+  <circle class="dot" cx="32" cy="32" r="23" opacity=".12"/>
+  <g class="orb" opacity=".24"><circle cx="32" cy="9" r="3" fill="url(#g)"/><circle cx="55" cy="34" r="2.5" fill="url(#g)"/><circle cx="12" cy="46" r="2.5" fill="url(#g)"/></g>
+  <g><path class="line" d="M32 10c-9 0-16 7-16 15 0 6 3 10 8 14 2 1.6 2 3.2 2 5h12c0-1.8 0-3.4 2-5 5-4 8-8 8-14 0-8-7-15-16-15z"/><path class="line accent" d="M26 50h12M28 57h8M32 18v10l6 4"/></g>
+</svg>

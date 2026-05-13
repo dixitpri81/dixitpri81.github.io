@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Priyam Dixit — AppSec Engineer &amp; CS Researcher</title>
+<meta content="Priyam Dixit portfolio — CS Researcher, Application Security Engineer, full-stack developer, AI builder, and responsible disclosure researcher based in Delhi, India." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Playfair+Display:wght@800;900&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root{
+      --paper:#f4f4f3;
+      --ink:#121212;
+      --muted:#818181;
+      --line:#d8d8d8;
+      --soft:#ffffff8a;
+      --apple:#2ba8ff;
+      --radius:30px;
+      --shadow: 0 38px 90px rgba(27, 27, 27, .16), 0 10px 35px rgba(0,0,0,.08);
+      --inner: inset 0 1px 0 rgba(255,255,255,.9), inset 0 -1px 0 rgba(0,0,0,.06);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:#fff;color:var(--ink)}
+    body{
+      margin:0;
+      font-family:Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:#fff;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:geometricPrecision;
+    }
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    button{font:inherit}
+
+    .portfolio-page{
+      width:min(1280px, 100%);
+      margin:0 auto;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(255, 202, 116, .55) 0, rgba(255, 202, 116, .22) 16%, transparent 34%),
+        radial-gradient(circle at 56% -10%, rgba(241, 183, 205, .55) 0, rgba(241, 183, 205, .22) 17%, transparent 36%),
+        radial-gradient(circle at 86% 0%, rgba(194, 201, 237, .52) 0, rgba(194, 201, 237, .18) 22%, transparent 42%),
+        linear-gradient(180deg, #f7f7f6 0%, #f2f2f1 58%, #f5f5f4 100%);
+      min-height:100vh;
+      overflow:hidden;
+      position:relative;
+    }
+    .portfolio-page::after{
+      content:"";
+      position:absolute; inset:0;
+      pointer-events:none;
+      background:linear-gradient(180deg, rgba(255,255,255,.35) 0%, rgba(255,255,255,.2) 32%, rgba(255,255,255,0) 100%);
+    }
+    .content{position:relative;z-index:1}
+
+
+    .collab-layer{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+    .collab-orb{position:absolute;width:260px;height:260px;border-radius:42% 58% 62% 38% / 48% 42% 58% 52%;filter:blur(.2px);opacity:.22;mix-blend-mode:multiply;transform:translate3d(0, var(--collab-y, 0px), 0);animation:collabMorph 14s ease-in-out infinite alternate, collabDrift 18s ease-in-out infinite}
+    .collab-orb.one{left:4%;top:9%;background:linear-gradient(135deg, rgba(255,208,120,.52), rgba(244,152,203,.24));animation-delay:0s}
+    .collab-orb.two{right:1%;top:28%;background:linear-gradient(135deg, rgba(112,199,255,.45), rgba(139,92,246,.20));animation-delay:-5s;width:300px;height:300px}
+    .collab-orb.three{left:38%;top:57%;background:linear-gradient(135deg, rgba(92,255,190,.28), rgba(255,168,84,.22));animation-delay:-9s;width:220px;height:220px}
+    .collab-marquee{position:absolute;left:0;right:0;bottom:32px;overflow:hidden;opacity:1;mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);-webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)}
+    .collab-track{display:flex;gap:14px;width:max-content;animation:collabScroll 28s linear infinite;will-change:transform}
+    .collab-track span{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 17px;border-radius:999px;background:rgba(255,255,255,.88);border:1px solid rgba(0,0,0,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.95), 0 12px 30px rgba(0,0,0,.09);font-size:11.5px;font-weight:950;letter-spacing:.065em;text-transform:uppercase;color:#151515;text-shadow:0 1px 0 rgba(255,255,255,.76);backdrop-filter:blur(18px) saturate(170%);-webkit-backdrop-filter:blur(18px) saturate(170%)}
+    .collab-track span::before{content:"";width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,#ffb86b,#7c5cff);box-shadow:0 0 16px rgba(124,92,255,.35)}
+    @keyframes collabMorph{0%{border-radius:42% 58% 62% 38% / 48% 42% 58% 52%}100%{border-radius:62% 38% 42% 58% / 44% 60% 40% 56%}}
+    @keyframes collabDrift{0%,100%{translate:0 0;rotate:0deg}50%{translate:22px -18px;rotate:8deg}}
+    @keyframes collabScroll{to{transform:translateX(-50%)}}
+
+    body.animations-ready [data-animate]{opacity:0;transform:translateY(34px) scale(.985);transition:opacity .8s cubic-bezier(.2,.8,.2,1) var(--delay,0ms), transform .8s cubic-bezier(.2,.8,.2,1) var(--delay,0ms);will-change:opacity,transform}
+    body.animations-ready [data-animate].in-view{opacity:1;transform:translateY(0) scale(1)}
+    body.animations-ready .section-head[data-animate]{transform:translateY(22px)}
+    body.animations-ready .section-head[data-animate].in-view{transform:translateY(0)}
+
+    .hero{min-height:830px;position:relative;padding-top:55px}
+    .nav-shell{
+      width:min(1030px, calc(100% - 52px));
+      min-height:60px;
+      margin:0 auto;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.72);
+      background:rgba(255,255,255,.38);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 30px 0 16px;
+      box-shadow:var(--inner), 0 18px 50px rgba(55, 55, 55, .08);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+    }
+    .brand{display:inline-flex;align-items:center;justify-content:flex-start;line-height:1;min-width:82px;position:relative;color:#111}
+    .logo-glass{width:48px;height:48px;border-radius:18px;display:grid;place-items:center;position:relative;overflow:hidden;background:linear-gradient(135deg, rgba(255,255,255,.76), rgba(255,255,255,.28) 43%, rgba(255,255,255,.12));border:1px solid rgba(255,255,255,.86);box-shadow:inset 0 1px 0 rgba(255,255,255,.96), inset 0 -1px 0 rgba(0,0,0,.08), 0 16px 34px rgba(0,0,0,.09), 0 2px 4px rgba(255,255,255,.7);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%)}
+    .logo-glass::before{content:"";position:absolute;inset:1px;border-radius:17px;background:linear-gradient(145deg, rgba(255,255,255,.82) 0%, rgba(255,255,255,.16) 38%, rgba(255,255,255,0) 61%);opacity:.92;pointer-events:none}
+    .logo-glass::after{content:"";position:absolute;width:72px;height:22px;left:-18px;top:6px;transform:rotate(-28deg);background:linear-gradient(90deg, transparent, rgba(255,255,255,.68), transparent);opacity:.7;pointer-events:none}
+    .logo-text{position:relative;z-index:1;font-family:"Playfair Display", Georgia, serif;font-size:24px;font-weight:900;letter-spacing:-.12em;color:#111;text-shadow:0 1px 0 rgba(255,255,255,.88)}
+    .footer-logo{display:inline-flex;align-items:center;justify-content:flex-start;line-height:1;margin-top:73px;color:#121212}
+    .footer-logo .logo-glass{width:118px;height:118px;border-radius:38px;box-shadow:inset 0 1px 0 rgba(255,255,255,.98), inset 0 -1px 0 rgba(0,0,0,.08), 0 28px 55px rgba(0,0,0,.12), 0 2px 4px rgba(255,255,255,.8)}
+    .footer-logo .logo-glass::before{border-radius:37px}
+    .footer-logo .logo-glass::after{width:155px;height:44px;top:17px;left:-38px}
+    .footer-logo .logo-text{font-size:63px;letter-spacing:-.13em}
+
+    .nav-links{display:flex;align-items:center;gap:32px;margin-left:10px;margin-right:auto}
+    .nav-links a{font-weight:800;font-size:14px;letter-spacing:.01em;transition:.22s ease;color:#171717}
+    .nav-links a:hover{opacity:.55}
+    .social{display:flex;align-items:center;gap:21px;font-weight:800;color:#171717}
+    .social a{width:22px;height:22px;display:grid;place-items:center;font-size:20px;line-height:1;opacity:.92}
+    .social .in{font-size:19px;background:#151515;color:#f3f3f3;border-radius:3px;font-weight:900;font-family:Arial,sans-serif}
+    .social .h1{font-size:12px;background:#151515;color:#f3f3f3;border-radius:50%;font-weight:900;font-family:Arial,sans-serif;letter-spacing:-.05em}
+    .social .divider{width:1px;height:24px;background:#9d9d9d;opacity:.62;margin:0 2px 0 4px}
+    .switch{width:39px;height:21px;border:2px solid #171717;border-radius:999px;position:relative;display:block}
+    .switch::before{content:"";position:absolute;width:17px;height:17px;border-radius:50%;background:#171717;right:1px;top:0}
+
+    .hero-inner{position:relative;width:min(1000px, calc(100% - 70px));margin:192px auto 0;display:grid;grid-template-columns:1fr 260px;align-items:start;gap:46px}
+    .hero-kicker{font-size:12px;line-height:1.45;letter-spacing:.04em;color:#737373;font-weight:700;margin:0 0 18px;text-transform:uppercase}
+    .hero-title{margin:0 0 25px;font-size:48px;line-height:.98;letter-spacing:-.045em;font-weight:900;white-space:nowrap;min-height:1.02em}
+    .hero-title .muted{color:#868686;font-weight:900;margin-right:10px}
+    .hero-typewriter{display:inline-block;width:18ch;max-width:18ch;white-space:nowrap;overflow:hidden;border-right:3px solid currentColor;vertical-align:bottom;animation:heroTypewriter 3.35s steps(18,end) .25s infinite alternate, caretBlink .72s steps(1,end) infinite}
+    @keyframes heroTypewriter{0%,12%{width:0}70%,100%{width:18ch}}
+    .hero-copy{margin:0;color:#717171;font-size:16px;line-height:1.26;letter-spacing:-.015em;max-width:615px;font-weight:600}
+    .hero-actions{display:flex;align-items:center;gap:18px;margin-top:52px;flex-wrap:wrap}
+    .btn{
+      height:50px;border-radius:8px;padding:0 18px;display:inline-flex;align-items:center;gap:11px;
+      font-weight:900;font-size:14px;letter-spacing:-.02em;border:none;cursor:pointer;transition:.22s ease;
+    }
+    .btn.primary{background:#070707;color:#fff;box-shadow:0 15px 30px rgba(0,0,0,.18)}
+    .btn.secondary{background:rgba(255,255,255,.56);color:#303030;box-shadow:12px 12px 42px rgba(132,132,132,.18), -12px -12px 38px rgba(255,255,255,.92)}
+    .btn:hover{transform:translateY(-2px)}
+    .paper-plane{width:18px;height:18px;display:inline-block}
+    .hero-character{align-self:start;justify-self:end;width:235px;margin-top:-4px;margin-right:-9px;filter:drop-shadow(0 24px 29px rgba(0,0,0,.12));transform-origin:55% 90%;animation:memojiFloat 5.6s ease-in-out infinite, memojiTilt 8s ease-in-out infinite;will-change:transform,filter}.wave-avatar{border-radius:28px}
+    @keyframes memojiFloat{0%,100%{translate:0 0}50%{translate:0 -14px}}
+    @keyframes memojiTilt{0%,100%{rotate:0deg;scale:1}38%{rotate:-2.2deg;scale:1.015}72%{rotate:2deg;scale:1.01}}
+
+
+    .hero-divider{position:absolute;left:0;right:0;bottom:0;height:1px;background:#151515;opacity:.65}
+    .home-bottom{min-height:377px;display:grid;grid-template-columns:1fr 380px 240px;gap:0;width:min(1040px, calc(100% - 52px));margin:0 auto;padding:62px 0 0;align-items:start}
+    .footer-block h3{margin:0 0 25px;font-size:20px;line-height:1;font-weight:900;letter-spacing:-.025em}
+    .footer-block ul{list-style:none;padding:0;margin:0;display:grid;gap:25px}
+    .footer-block a,.footer-block li{font-size:16px;line-height:1;color:#222;letter-spacing:-.025em}
+    .site-credits{width:min(1040px, calc(100% - 52px));margin:-42px auto 58px;padding-top:18px;border-top:1px solid rgba(18,18,18,.24);display:flex;align-items:center;justify-content:space-between;gap:18px;position:relative;z-index:3}
+    .made,.copyright{margin:0;font-size:12px;color:#171717;text-transform:uppercase;letter-spacing:.08em;font-weight:900;line-height:1.35;text-shadow:0 1px 0 rgba(255,255,255,.52)}
+    .made a{color:#000;text-decoration:none;border-bottom:1px solid rgba(0,0,0,.72);padding-bottom:1px}
+    .made a:hover{opacity:.7}
+    .contact-type-title{min-height:1.04em;display:block}
+    .typewriter-text{display:inline-block;width:13.8ch;max-width:13.8ch;white-space:nowrap;overflow:hidden;border-right:2px solid currentColor;animation:typewriter 3.1s steps(14,end) .25s infinite alternate, caretBlink .72s steps(1,end) infinite}
+    @keyframes typewriter{0%,14%{width:0} 68%,100%{width:13.8ch}}
+    @keyframes caretBlink{0%,100%{border-color:currentColor} 50%{border-color:transparent}}
+    @media (prefers-reduced-motion: reduce){.typewriter-text,.hero-typewriter{animation:none;width:auto;max-width:none;border-right:0}.hero-character,.skill-icon,.collab-track,.collab-orb{animation:none!important}body.animations-ready [data-animate]{opacity:1;transform:none;transition:none}}
+
+    .section{
+      width:min(1040px, calc(100% - 52px));
+      margin:0 auto;
+      padding:110px 0;
+      border-top:1px solid rgba(18,18,18,.28);
+      position:relative;
+      z-index:2;
+    }
+    .section-head{display:grid;grid-template-columns:310px 1fr;gap:48px;align-items:start;margin-bottom:55px}
+    .section-tag{font-weight:900;font-size:13px;letter-spacing:-.015em;color:#111;margin:0;text-transform:uppercase}
+    .section-title{font-size:54px;line-height:.98;letter-spacing:-.065em;margin:0;font-weight:900;color:#111}
+    .section-title .soft{color:#8d8d8d}
+    .section-copy{font-size:17px;line-height:1.35;color:#777;max-width:650px;font-weight:500;letter-spacing:-.025em;margin:20px 0 0}
+
+    .neo-card{
+      background:rgba(255,255,255,.46);
+      border:1px solid rgba(255,255,255,.76);
+      border-radius:26px;
+      box-shadow:20px 20px 65px rgba(130,130,130,.18), -18px -18px 60px rgba(255,255,255,.9), inset 0 1px 0 rgba(255,255,255,.82);
+    }
+    .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:34px}
+    .about-main{padding:34px 38px;min-height:278px}
+    .about-main p{font-size:24px;line-height:1.18;letter-spacing:-.045em;font-weight:800;margin:0;color:#171717}
+    .about-main p span{color:#888}
+    .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .stat{padding:27px 25px;min-height:130px}
+    .stat b{display:block;font-size:42px;line-height:1;letter-spacing:-.07em;margin-bottom:14px}
+    .stat span{display:block;font-size:13px;color:#777;line-height:1.28;font-weight:700}
+
+    .skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+    .skill-card{padding:24px 21px;min-height:198px;display:flex;flex-direction:column;justify-content:space-between}
+    .skill-icon{width:54px;height:54px;border-radius:18px;object-fit:contain;filter:drop-shadow(0 14px 24px rgba(83,88,255,.16));animation:gradientIconBreathe 3.6s ease-in-out infinite;transition:transform .26s ease, filter .26s ease;background:rgba(255,255,255,.18)}
+    .skill-card:hover .skill-icon{transform:translateY(-4px) scale(1.06);filter:drop-shadow(0 18px 28px rgba(124,92,255,.24))}
+    @keyframes gradientIconBreathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+
+    .skill-card h3{font-size:18px;line-height:1.03;margin:18px 0 10px;letter-spacing:-.04em}
+    .skill-card p{font-size:13px;line-height:1.28;color:#777;margin:0;font-weight:600;letter-spacing:-.015em}
+
+    .experience-list{display:grid;gap:18px}
+    .exp-row{display:grid;grid-template-columns:220px 1fr 180px;gap:30px;align-items:center;padding:27px 30px;border-radius:24px;background:rgba(255,255,255,.38);border:1px solid rgba(255,255,255,.7);box-shadow:12px 12px 38px rgba(120,120,120,.13), -12px -12px 38px rgba(255,255,255,.7)}
+    .exp-date{font-size:13px;font-weight:800;color:#838383;letter-spacing:-.02em;text-transform:uppercase}
+    .exp-title{font-size:21px;font-weight:900;letter-spacing:-.045em;margin:0 0 6px}
+    .exp-desc{font-size:14px;line-height:1.32;color:#777;margin:0;font-weight:600}
+    .exp-type{text-align:right;font-size:13px;font-weight:900;color:#111;text-transform:uppercase}
+
+    .achievement-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .achievement{padding:28px 25px;min-height:170px}
+    .achievement .date{font-size:12px;font-weight:900;color:#888;margin-bottom:17px;text-transform:uppercase;letter-spacing:-.01em}
+    .achievement h3{font-size:20px;line-height:1.03;margin:0 0 10px;font-weight:900;letter-spacing:-.045em}
+    .achievement p{font-size:13px;line-height:1.33;color:#777;font-weight:600;margin:0}
+
+    .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    .project{overflow:hidden;position:relative;border-radius:30px;background:rgba(255,255,255,.44);border:1px solid rgba(255,255,255,.76);box-shadow:20px 20px 65px rgba(130,130,130,.16), -18px -18px 60px rgba(255,255,255,.83)}
+    .project-media{height:245px;background:linear-gradient(135deg, rgba(255,255,255,.58), rgba(255,255,255,.18));overflow:hidden;position:relative}
+    .project-media img{width:100%;height:100%;object-fit:cover;transform:scale(1);transition:.5s ease}
+    .project:hover img{transform:scale(1.025)}
+    .project-body{padding:25px 27px 28px}
+    .project-label{font-size:12px;font-weight:900;color:#878787;letter-spacing:.01em;margin-bottom:12px;text-transform:uppercase}
+    .project h3{margin:0 0 11px;font-size:26px;line-height:.98;letter-spacing:-.055em}
+    .project p{font-size:14px;line-height:1.32;color:#777;margin:0 0 21px;font-weight:600}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{font-size:11px;font-weight:900;border:1px solid rgba(0,0,0,.11);background:rgba(255,255,255,.48);padding:8px 10px;border-radius:999px;color:#242424;box-shadow:inset 0 1px 0 rgba(255,255,255,.7)}
+
+    .contact-panel{display:grid;grid-template-columns:1fr 310px;gap:28px;align-items:stretch}
+    .contact-main{padding:45px 48px;min-height:245px;position:relative;overflow:hidden}
+    .contact-main::before{content:"";position:absolute;inset:auto auto -140px -70px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle, rgba(255,200,109,.42), rgba(200,207,241,.26) 52%, transparent 72%);pointer-events:none;z-index:0}
+    .contact-main h2{font-size:52px;line-height:.98;letter-spacing:-.065em;margin:0 0 21px;position:relative;z-index:1}
+    .contact-main p{font-size:16px;line-height:1.38;color:#777;margin:0 0 32px;max-width:570px;font-weight:600;position:relative;z-index:1}
+    .contact-main .btn{position:relative;z-index:2;pointer-events:auto}
+    .contact-side a{position:relative;z-index:2;pointer-events:auto}
+    .contact-side{padding:34px 30px;display:grid;gap:18px;align-content:center}
+    .contact-side a{height:48px;border-radius:13px;background:rgba(255,255,255,.48);border:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:space-between;padding:0 17px;font-size:14px;font-weight:900;box-shadow:inset 0 1px 0 rgba(255,255,255,.72)}
+
+    .back-top{position:fixed;right:22px;bottom:22px;z-index:20;background:rgba(255,255,255,.74);border:1px solid rgba(0,0,0,.11);box-shadow:0 14px 30px rgba(0,0,0,.12);border-radius:999px;padding:12px 16px;font-size:13px;font-weight:900;backdrop-filter:blur(10px)}
+
+
+    .detail-card{cursor:pointer;transition:transform .22s ease, box-shadow .22s ease, background .22s ease}
+    .detail-card:hover{transform:translateY(-4px);box-shadow:26px 26px 72px rgba(130,130,130,.20), -20px -20px 65px rgba(255,255,255,.95), inset 0 1px 0 rgba(255,255,255,.82)}
+    .detail-card:focus{outline:3px solid rgba(43,168,255,.38);outline-offset:4px}
+    .open-note{display:inline-flex;margin-top:15px;font-size:12px;font-weight:900;color:#111;letter-spacing:-.02em;border-bottom:1px solid rgba(0,0,0,.25)}
+    .project{cursor:pointer;transition:transform .22s ease, box-shadow .22s ease}
+    .project:hover{transform:translateY(-4px)}
+    .mode-toggle{border:0;background:transparent;padding:0;margin:0;line-height:0;cursor:pointer}
+    .mode-toggle:focus-visible{outline:3px solid rgba(43,168,255,.38);outline-offset:7px;border-radius:999px}
+
+    .modal-overlay{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:26px;background:rgba(14,14,14,.34);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+    .modal-overlay.active{display:flex}
+    .modal-card{width:min(760px, 100%);max-height:min(86vh, 850px);overflow:auto;background:rgba(247,247,246,.92);border:1px solid rgba(255,255,255,.82);border-radius:34px;box-shadow:0 44px 110px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.85);padding:58px 36px 36px;position:relative;color:#121212}
+    .mac-window-controls{position:absolute;left:24px;top:22px;display:flex;align-items:center;gap:9px;z-index:4}
+    .mac-window-close,.mac-window-dot{width:15px;height:15px;border-radius:999px;border:1px solid rgba(0,0,0,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.58),0 4px 10px rgba(0,0,0,.08);display:block;position:relative}
+    .mac-window-close{background:linear-gradient(180deg,#ff7b73 0%,#ff5f57 100%);cursor:pointer;padding:0;appearance:none;-webkit-appearance:none}
+    .mac-window-dot.yellow{background:linear-gradient(180deg,#ffd46a 0%,#ffbd2e 100%)}
+    .mac-window-dot.green{background:linear-gradient(180deg,#44de71 0%,#28c840 100%)}
+    .mac-window-close::before,.mac-window-close::after{content:"";position:absolute;left:50%;top:50%;width:7px;height:1.6px;border-radius:999px;background:rgba(95,0,0,.55);opacity:.0;transition:opacity .18s ease;transform-origin:center}
+    .mac-window-close::before{transform:translate(-50%,-50%) rotate(45deg)}
+    .mac-window-close::after{transform:translate(-50%,-50%) rotate(-45deg)}
+    .mac-window-controls:hover .mac-window-close::before,.mac-window-controls:hover .mac-window-close::after,.mac-window-close:focus-visible::before,.mac-window-close:focus-visible::after{opacity:1}
+    .mac-window-close:focus-visible{outline:3px solid rgba(43,168,255,.38);outline-offset:4px}
+    .modal-meta{font-size:12px;font-weight:900;color:#888;text-transform:uppercase;letter-spacing:.02em;margin:0 50px 14px 0}
+    .modal-title{font-size:42px;line-height:.98;letter-spacing:-.065em;margin:0 50px 18px 0;font-weight:900;color:#111}
+    .modal-summary{font-size:16px;line-height:1.38;color:#686868;font-weight:650;letter-spacing:-.025em;margin:0 0 26px;max-width:650px}
+    .modal-grid{display:grid;gap:16px;margin-top:22px}
+    .modal-block{border-radius:24px;background:rgba(255,255,255,.48);border:1px solid rgba(255,255,255,.8);padding:22px 22px;box-shadow:12px 12px 34px rgba(135,135,135,.12), -10px -10px 32px rgba(255,255,255,.72)}
+    .modal-block h4{font-size:14px;line-height:1;margin:0 0 12px;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;color:#111}
+    .modal-block p{font-size:14px;line-height:1.45;margin:0;color:#707070;font-weight:600;letter-spacing:-.015em}
+    .modal-list{margin:0;padding-left:18px;display:grid;gap:8px;color:#707070;font-size:14px;line-height:1.42;font-weight:600}
+    .modal-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+    .modal-media{display:grid;gap:16px;margin:0 0 24px}
+    .modal-media-grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .modal-shot{margin:0;padding:12px;border-radius:26px;background:rgba(255,255,255,.52);border:1px solid rgba(255,255,255,.84);box-shadow:12px 12px 34px rgba(135,135,135,.12), -10px -10px 32px rgba(255,255,255,.72)}
+    .modal-shot img{width:100%;height:auto;border-radius:18px;border:1px solid rgba(0,0,0,.08);box-shadow:0 10px 28px rgba(0,0,0,.08)}
+    .modal-shot figcaption{font-size:12px;line-height:1.4;color:#757575;font-weight:700;letter-spacing:-.01em;margin-top:10px}
+    .exp-row.detail-card{cursor:pointer;transition:transform .22s ease, box-shadow .22s ease, background .22s ease}
+    .exp-row.detail-card:hover{transform:translateY(-4px);box-shadow:18px 18px 46px rgba(120,120,120,.16), -14px -14px 40px rgba(255,255,255,.84)}
+
+    body.dark-mode{background:#0f0f10;color:#f4f4f3}
+    body.dark-mode .portfolio-page{background:radial-gradient(circle at 18% 0%, rgba(255,202,116,.24) 0, rgba(255,202,116,.08) 16%, transparent 34%),radial-gradient(circle at 56% -10%, rgba(241,183,205,.22) 0, rgba(241,183,205,.08) 17%, transparent 36%),radial-gradient(circle at 86% 0%, rgba(89,116,230,.22) 0, rgba(89,116,230,.08) 22%, transparent 42%),linear-gradient(180deg,#151516 0%,#111112 58%,#151516 100%)}
+    body.dark-mode .portfolio-page::after{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.01) 34%,rgba(255,255,255,0))}
+    body.dark-mode .nav-shell, body.dark-mode .neo-card, body.dark-mode .project, body.dark-mode .contact-side a, body.dark-mode .modal-card{background:rgba(28,28,30,.72);border-color:rgba(255,255,255,.12);box-shadow:20px 20px 65px rgba(0,0,0,.28),-18px -18px 60px rgba(255,255,255,.02),inset 0 1px 0 rgba(255,255,255,.08)}
+    body.dark-mode .brand, body.dark-mode .nav-links a, body.dark-mode .social, body.dark-mode .section-tag, body.dark-mode .section-title, body.dark-mode .footer-logo, body.dark-mode .footer-block h3, body.dark-mode .footer-block a, body.dark-mode .footer-block li, body.dark-mode .about-main p, body.dark-mode .stat b, body.dark-mode .exp-title, body.dark-mode .exp-type, body.dark-mode .achievement h3, body.dark-mode .project h3, body.dark-mode .contact-main h2, body.dark-mode .contact-side a, body.dark-mode .modal-title, body.dark-mode .modal-block h4, body.dark-mode .open-note{color:#f4f4f3}
+    body.dark-mode .hero-title, body.dark-mode .hero-title .muted{color:#f4f4f3}
+    body.dark-mode .section-title .soft, body.dark-mode .about-main p span{color:#9c9c9c}
+    body.dark-mode .hero-copy, body.dark-mode .section-copy, body.dark-mode .skill-card p, body.dark-mode .exp-desc, body.dark-mode .achievement p, body.dark-mode .project p, body.dark-mode .contact-main p, body.dark-mode .modal-summary, body.dark-mode .modal-block p, body.dark-mode .modal-list{color:#b7b7b7}
+    body.dark-mode .chip{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.12);color:#f4f4f3}
+    body.dark-mode .section, body.dark-mode .hero-divider{border-color:rgba(255,255,255,.18);background:transparent}
+    body.dark-mode .switch{border-color:#f4f4f3}
+    body.dark-mode .switch::before{left:1px;right:auto;background:#f4f4f3}
+    body.dark-mode .modal-block{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.12);color:#f4f4f3}
+    body.dark-mode .back-top{background:rgba(28,28,30,.74);border-color:rgba(255,255,255,.14);color:#f4f4f3}
+    body.dark-mode .logo-glass, body.dark-mode .footer-logo .logo-glass{background:linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.07) 43%, rgba(255,255,255,.03));border-color:rgba(255,255,255,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.18), inset 0 -1px 0 rgba(0,0,0,.45), 0 18px 34px rgba(0,0,0,.32)}
+    body.dark-mode .logo-text, body.dark-mode .footer-logo .logo-text{color:#f4f4f3;text-shadow:0 1px 0 rgba(0,0,0,.4)}
+    body.dark-mode .modal-shot{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)}
+    body.dark-mode .modal-shot figcaption{color:#bcbcbc}
+    body.dark-mode .site-credits{border-top-color:rgba(255,255,255,.24)}
+    body.dark-mode .made, body.dark-mode .copyright{color:#f0f0f0;text-shadow:none} body.dark-mode .made a{color:#ffffff;border-bottom-color:rgba(255,255,255,.72)}
+    body.dark-mode .collab-orb{opacity:.18;mix-blend-mode:screen}
+    body.dark-mode .collab-track span{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.26);color:#ffffff;text-shadow:0 1px 0 rgba(0,0,0,.3)}
+
+    @media (max-width: 900px){
+      .hero{padding-top:24px;min-height:auto;padding-bottom:62px}
+      .nav-shell{height:auto;min-height:60px;align-items:flex-start;padding:17px 18px;display:grid;grid-template-columns:1fr auto;gap:18px;border-radius:28px}
+      .nav-links{grid-column:1 / -1;order:3;flex-wrap:wrap;gap:14px 22px;margin:0}
+      .social{gap:13px}.social .divider,.switch{display:none}
+      .hero-inner{width:min(100% - 42px, 540px);margin:90px auto 0;grid-template-columns:1fr;gap:24px}
+      .hero-title{font-size:42px;white-space:normal;line-height:1.02}.hero-typewriter{max-width:18ch}.collab-marquee{bottom:20px}.collab-track span{height:30px;font-size:10px;padding:0 12px}
+      .hero-copy{font-size:15px}.hero-actions{gap:14px;margin-top:36px;flex-wrap:wrap}.hero-character{justify-self:start;margin:16px 0 0;width:188px}
+      .home-bottom{grid-template-columns:1fr 1fr;gap:35px;padding:55px 0}.footer-logo{grid-column:1 / -1;font-size:84px;margin-top:0}.site-credits{width:calc(100% - 42px);margin:-22px auto 48px}.made,.copyright{font-size:11px;color:#171717}
+      .section{padding:74px 0}.section-head{grid-template-columns:1fr;gap:18px}.section-title{font-size:42px}.about-grid,.projects-grid,.contact-panel{grid-template-columns:1fr}.skills-grid{grid-template-columns:1fr 1fr}.exp-row{grid-template-columns:1fr;gap:14px}.exp-type{text-align:left}.achievement-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 560px){
+      .portfolio-page{width:100%}.nav-shell,.home-bottom,.section,.site-credits{width:calc(100% - 28px)}.nav-links a{font-size:13px}.hero-inner{width:calc(100% - 28px);margin-top:65px}.hero-title{font-size:36px}.hero-typewriter{width:18ch;max-width:18ch}.btn{height:48px}.home-bottom{grid-template-columns:1fr}.footer-logo .logo-glass{width:88px;height:88px;border-radius:30px}.footer-logo .logo-text{font-size:48px}.footer-block ul{gap:18px}.section-title,.contact-main h2{font-size:35px}.skills-grid,.stat-grid,.achievement-grid{grid-template-columns:1fr}.about-main p{font-size:21px}.contact-main{padding:34px 25px}.project-media{height:210px}.back-top{display:none}.site-credits{display:grid;gap:9px;text-align:center;justify-items:center;margin:-18px auto 42px;padding-top:15px}.made,.copyright{font-size:11px;color:#111;line-height:1.45}.typewriter-text{width:13.8ch;max-width:13.8ch}.collab-orb{width:180px;height:180px}.collab-orb.two{width:210px;height:210px}
+    }
+  
+
+    /* Multi-page layout additions */
+    .page-nav-wrap{position:relative;z-index:4;padding-top:55px;padding-bottom:8px}
+    .subpage-main .section{border-top:0;padding-top:82px;min-height:calc(100vh - 250px)}
+    .subpage-main .section-head{margin-bottom:58px}
+    .nav-links a.active-page{opacity:1;color:#000;position:relative}
+    .nav-links a.active-page::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:2px;border-radius:99px;background:rgba(0,0,0,.78)}
+    .page-footer{width:min(1040px, calc(100% - 52px));margin:0 auto 34px;padding:36px 0 20px;border-top:1px solid rgba(18,18,18,.28);position:relative;z-index:2;display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center}
+    .page-footer-links{display:flex;align-items:center;gap:18px;flex-wrap:wrap;font-size:13px;font-weight:900;color:#202020;text-transform:uppercase;letter-spacing:.02em}
+    .page-footer-links a{opacity:.78;transition:.2s ease}.page-footer-links a:hover{opacity:1;transform:translateY(-1px)}
+    .subpage-main .site-credits{margin:0;display:grid;gap:6px;text-align:right;justify-items:end}
+    body.dark-mode .nav-links a.active-page{color:#fff}
+    body.dark-mode .nav-links a.active-page::after{background:rgba(255,255,255,.78)}
+    body.dark-mode .page-footer{border-top-color:rgba(255,255,255,.18)}
+    body.dark-mode .page-footer-links{color:#f0f0f0}
+    @media (max-width:900px){.page-nav-wrap{padding-top:24px}.page-footer{grid-template-columns:1fr;align-items:start}.subpage-main .site-credits{text-align:left;justify-items:start}.subpage-main .section{padding-top:68px}}
+    @media (max-width:560px){.page-footer{width:calc(100% - 28px);margin-bottom:30px}.page-footer-links{gap:12px;font-size:12px;justify-content:center}.subpage-main .site-credits{text-align:center;justify-items:center}.subpage-main .section{min-height:auto}}
+</style>
+</head>
+<body class="is-subpage">
+  <main class="portfolio-page" id="top">
+<div class="collab-layer" aria-hidden="true">
+
+<span class="collab-orb one"></span>
+<span class="collab-orb two"></span>
+<span class="collab-orb three"></span>
+
+</div>
+<div class="content subpage-main">
+<header class="page-nav-wrap"><nav aria-label="Primary navigation" class="nav-shell">
+<a aria-label="Priyam Dixit home" class="brand" href="index.html"><span class="logo-glass"><span class="logo-text">PD</span></span></a>
+<div class="nav-links">
+<a href="about.html">About</a>
+<a class="active-page" href="skills.html">Skills</a>
+<a href="experience.html">Experience</a>
+<a href="disclosures.html">Disclosures</a>
+<a href="rewards.html">Rewards</a>
+<a href="projects.html">Projects</a>
+<a href="contact.html">Contact</a>
+</div>
+<div aria-label="Social links" class="social">
+<a aria-label="HackerOne" class="h1" href="https://hackerone.com/dixitpri81" rel="noreferrer" target="_blank">H1</a>
+<a aria-label="X" href="https://x.com/dixitpri81" rel="noreferrer" target="_blank">𝕏</a>
+<a aria-label="GitHub" href="https://github.com/dixitpri81" rel="noreferrer" target="_blank">●</a>
+<span class="divider"></span>
+<button aria-label="Toggle display mode" class="mode-toggle" onclick="toggleTheme()" type="button"><span aria-hidden="true" class="switch"></span></button>
+</div>
+</nav></header>
+<section class="section" id="skills">
+<div class="section-head">
+<p class="section-tag">Skills</p>
+<div>
+<h2 class="section-title"><span class="soft">Security,</span> code, systems.</h2>
+<p class="section-copy">A focused skill set built from diploma coursework, software projects, Oracle Academy certifications, and hands-on security research across real platforms.</p>
+</div>
+</div>
+<div class="skills-grid">
+<article class="neo-card skill-card"><img alt="Security icon" class="skill-icon" src="assets/security-gradient.svg"/><div><h3>Application Security</h3><p>BOLA, IDOR, access-control testing, insecure object reference analysis, and practical impact mapping.</p></div></article>
+<article class="neo-card skill-card"><img alt="Browser icon" class="skill-icon" src="assets/api-gradient.svg"/><div><h3>API &amp; Proxy Testing</h3><p>Manual proxy-based audits, request mutation, session comparison, and reproducible evidence capture.</p></div></article>
+<article class="neo-card skill-card"><img alt="Code editor icon" class="skill-icon" src="assets/code-gradient.svg"/><div><h3>Full-Stack Development</h3><p>ReactJS, NodeJS, ExpressJS, MongoDB, Redux Toolkit, Mongoose, Tailwind CSS, HTML, CSS, and JavaScript.</p></div></article>
+<article class="neo-card skill-card"><img alt="Design icon" class="skill-icon" src="assets/ai-gradient.svg"/><div><h3>AI &amp; Automation</h3><p>Python, TensorFlow/Keras, OpenCV, Flask/FastAPI, computer vision, automation, and image-processing workflows.</p></div></article>
+<article class="neo-card skill-card"><img alt="GitHub icon" class="skill-icon" src="assets/engineering-gradient.svg"/><div><h3>Secure Engineering</h3><p>Linux, Docker, GitHub workflows, backend deployment, and resilient web infrastructure practices.</p></div></article>
+<article class="neo-card skill-card"><img alt="Documentation icon" class="skill-icon" src="assets/database-gradient.svg"/><div><h3>Databases</h3><p>Oracle SQL foundation, MySQL, PostgreSQL, MongoDB, and practical database-backed application design.</p></div></article>
+<article class="neo-card skill-card"><img alt="Community icon" class="skill-icon" src="assets/reporting-gradient.svg"/><div><h3>Reporting &amp; Triage</h3><p>CVSS narratives, vulnerability summaries, proof chains, screenshot references, and coordinated disclosure communication.</p></div></article>
+<article class="neo-card skill-card"><img alt="Presentation icon" class="skill-icon" src="assets/product-gradient.svg"/><div><h3>Product Thinking</h3><p>Web design, sustainability-focused concepts, technical feasibility, hackathon pitching, and user-centered problem solving.</p></div></article>
+</div>
+</section>
+<footer class="page-footer" aria-label="Page footer">
+  <div class="page-footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="skills.html">Skills</a>
+    <a href="experience.html">Experience</a>
+    <a href="disclosures.html">Disclosures</a>
+    <a href="rewards.html">Rewards</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div aria-label="Portfolio credits" class="site-credits">
+<p class="copyright">© 2026 Priyam Dixit. All Rights Reserved.</p>
+<p class="made">Developed &amp; Crafted by <a href="https://www.instagram.com/Dixit_Priyam/" rel="noopener noreferrer" target="_blank">Dixit_Priyam</a></p>
+</div>
+</footer>
+</div>
+  </main>
+  <a class="back-top" href="#top">Back to top ↑</a>
+
+  <div aria-hidden="true" class="modal-overlay" id="detailModal" onclick="overlayClose(event)">
+<article aria-labelledby="modalTitle" aria-modal="true" class="modal-card" role="dialog">
+<div aria-label="Window controls" class="mac-window-controls"><button aria-label="Close details" class="mac-window-close" onclick="closeDetail()" type="button"></button><span aria-hidden="true" class="mac-window-dot yellow"></span><span aria-hidden="true" class="mac-window-dot green"></span></div>
+<p class="modal-meta" id="modalMeta"></p>
+<h2 class="modal-title" id="modalTitle"></h2>
+<p class="modal-summary" id="modalSummary"></p>
+<div class="modal-media" id="modalMedia"></div>
+<div class="modal-grid" id="modalBlocks"></div>
+<div class="modal-tags" id="modalTags"></div>
+</article>
+</div>
+
+  <script>
+    const details = {
+      hackeroneExperience: {
+        meta: 'May 2025 — Present • Security research / product security',
+        title: 'Independent Application Security Researcher — HackerOne',
+        summary: 'My active independent security-research practice on HackerOne, covering real-world vulnerability auditing, responsible disclosure, and documented bug bounty activity.',
+        media: [
+          {src: 'assets/hackerone-letter.png', alt: 'HackerOne researcher activity and payout letter', caption: 'Attached platform letter confirming my HackerOne researcher activity and payout record, used here inside the experience popup.'}
+        ],
+        blocks: [
+          ['Role scope', 'Performed manual proxy-based application-layer security audits across high-traffic cloud infrastructure and production web services using interceptors. My work focuses on authorization boundaries, object identifiers, rate-limiting logic, file-ingestion pipelines, and transport-layer exposure.'],
+          ['Representative results', 'This work led to validated disclosures across platforms such as Neon Console, Booking.com, Greenhouse, Anduril Industries, Banco Plata, and the University of Edinburgh, including a critical BOLA / IDOR validation and a rewarded file-upload finding.'],
+          ['Attached letter context', 'The attached HackerOne letter provides requested confirmation regarding my activity as a researcher on the platform and reflects documented payout information associated with my bug bounty work.']
+        ],
+        tags: ['HackerOne', 'Application Security', 'Responsible Disclosure', 'Bug Bounty', 'Research Practice']
+      },
+      dundeeScholarship: {
+        meta: '2026 • Academic scholarship • £18,500 overall',
+        title: 'University of Dundee — India Vice Chancellor South Asia Scholarship',
+        summary: 'An international academic scholarship awarded by the University of Dundee, recognizing my profile for further studies.',
+        media: [
+          {src: 'assets/dundee-scholarship.png', alt: 'University of Dundee scholarship portal screenshot', caption: 'Scholarship notification screenshot for the University of Dundee India Vice Chancellor South Asia Scholarship.'}
+        ],
+        blocks: [
+          ['Scholarship detail', 'Received the India Vice Chancellor South Asia Scholarship from the University of Dundee with an overall value of £18,500.'],
+          ['Why it matters', 'This adds academic recognition to my portfolio alongside security research, product-building projects, and technical achievements.'],
+          ['Portfolio placement', 'Placed under Rewards & Achievements because it is a formal academic award and international admission milestone.']
+        ],
+        tags: ['University of Dundee', 'Scholarship', '£18,500', 'South Asia', 'Academic Recognition']
+      },
+      waikatoScholarship: {
+        meta: '2026 • Academic scholarship • NZ$15,000',
+        title: 'University of Waikato — Vice Chancellor International Excellence Scholarship',
+        summary: 'A Vice Chancellor International Excellence Scholarship awarded by the University of Waikato for further studies.',
+        media: [
+          {src: 'assets/waikato-letter.png', alt: 'University of Waikato scholarship confirmation letter', caption: 'Official confirmation letter for the Vice-Chancellor’s International Excellence Scholarship for India.'}
+        ],
+        blocks: [
+          ['Scholarship detail', 'Received the University of Waikato Vice Chancellor International Excellence Scholarship with a value of NZ$15,000.'],
+          ['Why it matters', 'The award reflects international recognition of my academic and technical profile across software engineering, security research, and applied projects.'],
+          ['Portfolio placement', 'Placed under Rewards & Achievements so visitors can see academic scholarships together with validated security and competition milestones.']
+        ],
+        tags: ['University of Waikato', 'Scholarship', 'NZ$15,000', 'International Excellence']
+      },
+      glasgowOffer: {
+        meta: '2026 • Unconditional offer • QS World University Rankings 2026 #79',
+        title: 'University of Glasgow — Unconditional Offer',
+        summary: 'An unconditional offer to pursue further studies at the University of Glasgow, a globally ranked UK university.',
+        media: [
+          {src: 'assets/glasgow-offer.png', alt: 'University of Glasgow unconditional offer letter', caption: 'Offer letter screenshot confirming the unconditional offer from the University of Glasgow.'}
+        ],
+        blocks: [
+          ['Offer detail', 'Received an unconditional offer letter from the University of Glasgow to pursue further studies.'],
+          ['Ranking context', 'The University of Glasgow is listed at #79 in the QS World University Rankings 2026, placing it within the global top 100.'],
+          ['Why it matters', 'This offer strengthens the academic side of my portfolio and supports my next step toward advanced computer science study.']
+        ],
+        tags: ['University of Glasgow', 'Unconditional Offer', 'QS #79', 'Top 100', 'Further Studies']
+      },
+      aucklandOffer: {
+        meta: '2026 • Unconditional offer • QS World University Rankings 2026 #65',
+        title: 'University of Auckland — Unconditional Offer',
+        summary: 'An unconditional offer to pursue further studies at the University of Auckland, New Zealand’s highest-ranked university in QS 2026.',
+        media: [
+          {src: 'assets/auckland-offer.png', alt: 'University of Auckland offer of admission letter', caption: 'Offer of admission screenshot from the University of Auckland.'}
+        ],
+        blocks: [
+          ['Offer detail', 'Received an unconditional offer letter from the University of Auckland to pursue further studies.'],
+          ['Ranking context', 'The University of Auckland is listed at #65 in the QS World University Rankings 2026.'],
+          ['Why it matters', 'This offer adds a strong global academic milestone to my portfolio and highlights recognition from a leading international university.']
+        ],
+        tags: ['University of Auckland', 'Unconditional Offer', 'QS #65', 'Top 100', 'Further Studies']
+      },
+      neon: {
+        meta: '10 Feb 2026 • Critical architecture validation',
+        title: 'Neon Console — BOLA / IDOR Research',
+        summary: 'A critical authorization-boundary finding focused on multi-tenant isolation failure inside cloud platform microservices.',
+        blocks: [
+          ['Disclosure depth', 'Identified and responsibly reported a Broken Object Level Authorization / Insecure Direct Object Reference issue calculated at 9.1 CVSS v3.1. The research focused on cross-tenant isolation, cryptographic token analysis, and structural parameter manipulation.'],
+          ['Security impact', 'The finding demonstrated that authorization checks around object-level resources could break tenant separation and create an architectural isolation risk.'],
+          ['Team response / validation', 'The finding was group-triaged as an authentic architectural breakdown of multi-tenant isolation.']
+        ],
+        tags: ['BOLA', 'IDOR', 'CVSS 9.1', 'Cloud Microservices', 'Multi-Tenant Isolation']
+      },
+      booking: {
+        meta: '20 Feb 2026 • Validated high-severity finding',
+        title: 'Booking.com — Confirmation Workflow Logic Risk',
+        summary: 'A high-severity workflow validation involving server-side rate limiting weakness in a booking confirmation flow.',
+        blocks: [
+          ['Disclosure depth', 'Documented a logic issue in a commercial booking confirmation workflow where missing server-side rate thresholds on a verification gate created brute-force exposure risk.'],
+          ['Security impact', 'The issue placed customer reservation PII and booking controls at risk by allowing repeated verification attempts against sensitive booking flows.'],
+          ['Team response / validation', 'The bug was thoroughly reviewed and group-triaged by internal engineers as a valid, reproducible security risk to customer session PII.']
+        ],
+        tags: ['Logic Flaw', 'Rate Limiting', 'PII Risk', 'Workflow Security']
+      },
+      greenhouse: {
+        meta: '25 Apr 2026 • Bug bounty reward',
+        title: 'Greenhouse — File Upload & MIME-Type Confusion',
+        summary: 'A validated Active Storage ingestion-pipeline issue that resulted in a formal financial bug bounty reward.',
+        blocks: [
+          ['Disclosure depth', 'Researched input validation in platform storage engines and identified an Unrestricted File Upload / MIME-Type Confusion bypass through multi-extension payload behavior.'],
+          ['Security impact', 'The finding showed how client-side verification boundaries and file-ingestion assumptions could be bypassed within a trusted production context.'],
+          ['Reward / team response', 'Greenhouse formally awarded a $50 bug bounty reward after validating the Unrestricted File Upload and MIME-Type Confusion bypass.']
+        ],
+        tags: ['Bug Bounty', '$50 Reward', 'MIME-Type Confusion', 'Unrestricted File Upload', 'Active Storage']
+      },
+      anduril: {
+        meta: '21 Jan 2026 • Product security disclosure',
+        title: 'Anduril Industries — Asset Ingestion Gateway Risk',
+        summary: 'A validated application-security disclosure affecting asset-ingestion gateway behavior.',
+        blocks: [
+          ['Disclosure depth', 'Reported an application security vulnerability affecting asset ingestion gateways, aligned with broader research into file-validation pipelines and trusted-domain content delivery behavior.'],
+          ['Security impact', 'The issue was treated as a structural risk in the ingestion path, where validation assumptions around uploaded assets could affect product security.'],
+          ['Team response / validation', 'The finding was thoroughly reviewed, accepted as a valid structural risk, and safely resolved by the corporate product security team.']
+        ],
+        tags: ['Product Security', 'Asset Ingestion', 'File Validation', 'Resolved']
+      },
+      edinburgh: {
+        meta: '02 Mar 2026 • Official commendation',
+        title: 'University of Edinburgh — Access Control & Admin Metadata',
+        summary: 'A responsible disclosure that received official validation and formal thanks from the university security team.',
+        media: [
+          {src: 'assets/edinburgh-thanks.png', alt: 'University of Edinburgh Information Security thanks email', caption: 'Attached University of Edinburgh Information Security response thanking me for the report and confirming relevant action was taken.'}
+        ],
+        blocks: [
+          ['Disclosure depth', 'Uncovered a chained access-control flaw and administrative information leakage risk on a production domain.'],
+          ['Security impact', 'The issue highlighted how access-control weaknesses and administrative metadata exposure can expand risk in public-facing environments.'],
+          ['Team response / validation', 'Received official validation, processing, and formal thanks from the university’s security engineering division.']
+        ],
+        tags: ['Official Thanks', 'Access Control', 'Admin Metadata', 'Responsible Disclosure']
+      },
+      banco: {
+        meta: '16 Dec 2025 • Validated finding',
+        title: 'Banco Plata — Authentication Verification Logic',
+        summary: 'A coordinated disclosure involving server-side authentication validation and missing rate-threshold behavior.',
+        blocks: [
+          ['Disclosure depth', 'Responsibly disclosed a server-side authentication validation logic flaw regarding missing rate thresholds on verification gateways.'],
+          ['Security impact', 'The weakness showed how verification workflows can become vulnerable when server-side thresholds are insufficiently enforced.'],
+          ['Team response / validation', 'The technical finding was thoroughly evaluated and group-triaged by internal engineers as a valid, reproducible security risk.']
+        ],
+        tags: ['Authentication', 'Verification Gateway', 'Rate Thresholds', 'Coordinated Disclosure']
+      },
+      infra: {
+        meta: 'Research area • Transport layer and DNS exposure',
+        title: 'Infrastructure Exposure & External Perimeter Research',
+        summary: 'Research into cloud perimeter exposure, dangling infrastructure records, and lifecycle-management failures.',
+        blocks: [
+          ['Research depth', 'Evaluated transport-layer and infrastructure exposure including dangling cloud storage assets and orphaned third-party routing records. The SOP references raw cloud storage exposure on Meesho infrastructure and orphaned third-party routing records on Airbnb infrastructure as examples of lifecycle-management risks.'],
+          ['Security impact', 'These findings illustrate how stale infrastructure, DNS routing gaps, and external domain perimeter weaknesses can lead to spoofing, enumeration, or domain-control risk.'],
+          ['Scope note', 'This section is presented as a research area from the SOP rather than a claimed financial reward.']
+        ],
+        tags: ['DNS Security', 'Subdomain Takeover', 'Cloud Storage', 'Perimeter Security']
+      },
+      hackathons: {
+        meta: '2024 — 2025 • Competition milestones',
+        title: 'Hackathon Participation Track',
+        summary: 'A record of participation across startup, innovation, AI/ML, Web3, and real-world problem-solving hackathons.',
+        blocks: [
+          ['Events', 'HackHatch at IIIT Delhi, MANTHAN’24 at COER University Roorke, VesHack at Guru Gobind Singh Indraprastha University, SAARTHI’25 at Graphic Era Hill University, Galgotias International Hackathon 2.0, DevShashtra 2025 at ABES Engineering College, and Code Slayer 2K25 at NIT Delhi.'],
+          ['Learning outcome', 'These events strengthened creative problem-solving, technology feasibility assessment, teamwork, live pitching, and innovation under time pressure.']
+        ],
+        tags: ['Hackathons', 'Innovation', 'Pitching', 'Teamwork']
+      },
+      oracle: {
+        meta: 'Nov 2022 • Technical credentials',
+        title: 'Oracle Academy Credentials',
+        summary: 'Formal technical learning milestones supporting database and Java foundations.',
+        blocks: [
+          ['Credentials', 'Completed Database Programming with SQL on 6 Nov 2022 and Java Foundation on 7 Nov 2022 through Oracle Academy.'],
+          ['Relevance', 'These credentials support the software-engineering base behind database-backed web systems, Java fundamentals, and secure application development.']
+        ],
+        tags: ['Oracle Academy', 'SQL', 'Java', 'Database Programming']
+      },
+      livleafs: {
+        meta: 'May 2025 — Aug 2025 • AI + Computer Vision',
+        title: 'LivLeafs — AI-Powered Plant Disease Detection',
+        summary: 'An AI-driven image-analysis application for plant and leaf diagnosis.',
+        blocks: [
+          ['Project depth', 'Developed an application that analyzes uploaded plant or leaf images to identify species, detect pests or diseases, explain harmful effects, and recommend targeted cures, nutrients, and fertilizers for recovery.'],
+          ['Build focus', 'The system combined image processing, computer vision, ML model inference, and a practical web interface so users could upload images and receive diagnosis-oriented outputs.'],
+          ['Technology stack', 'Python, TensorFlow/Keras, OpenCV, Flask/FastAPI, HTML, CSS, and JavaScript.']
+        ],
+        tags: ['Python', 'TensorFlow/Keras', 'OpenCV', 'Flask/FastAPI', 'Computer Vision']
+      },
+      resq: {
+        meta: 'Jan 2025 — Apr 2025 • Full-stack + disaster response',
+        title: 'ResQ Sliderzz — Disaster Response Platform',
+        summary: 'A dual-platform application designed to improve disaster-response coordination.',
+        blocks: [
+          ['Project depth', 'Built for agencies during calamities, the platform supports real-time resource tracking, efficient communication channels, and connectivity solutions for better situational awareness.'],
+          ['Build focus', 'The project was designed for web and Android workflows, helping response teams coordinate resources and maintain operational visibility during crisis scenarios.'],
+          ['Technology stack', 'ReactJS, NodeJS, ExpressJS, MongoDB, Redux Toolkit, Mongoose, and Tailwind CSS.']
+        ],
+        tags: ['ReactJS', 'NodeJS', 'MongoDB', 'Redux Toolkit', 'Tailwind CSS']
+      },
+      revamp: {
+        meta: 'Sep 2024 — Dec 2024 • Sustainability platform',
+        title: 'Revamp — E-Waste Lifecycle Platform',
+        summary: 'A sustainability-focused platform for responsible electronics reuse and carbon-footprint reduction.',
+        blocks: [
+          ['Project depth', 'Designed to address carbon-emission reduction through responsible e-waste management, collection, refurbishment, and resale of discarded electronics.'],
+          ['Impact model', 'By extending device lifecycles and diverting e-waste from landfills, the platform supports reuse and reduces demand for new device production.'],
+          ['Build focus', 'The project blended web design, sustainability logic, marketplace-style flows, and lifecycle tracking.']
+        ],
+        tags: ['Sustainability', 'E-Waste', 'Carbon Reduction', 'Web Design']
+      },
+      smartglasses: {
+        meta: 'Apr 2024 — Aug 2024 • Assistive AI',
+        title: 'AI-Powered Smart Glasses',
+        summary: 'A prototype assistive-technology system for visually impaired users.',
+        blocks: [
+          ['Project depth', 'Created a prototype integrating cameras, ultrasonic sensors, and touch-based controls to support navigation and object identification for visually impaired users.'],
+          ['Build focus', 'The system explored how hardware sensing and AI interpretation can work together to improve mobility and daily accessibility.'],
+          ['Purpose', 'The project reflects a broader focus on using technology for direct social benefit and inclusive problem solving.']
+        ],
+        tags: ['Assistive Tech', 'AI', 'Sensors', 'Navigation', 'Object Identification']
+      },
+      casper: {
+        meta: 'Nov 2023 — Mar 2024 • Privacy AI assistant',
+        title: 'Casper — Voice-Controlled AI Assistant',
+        summary: 'A privacy-focused AI assistant concept powered by LLaMA-model integration.',
+        blocks: [
+          ['Project depth', 'Developed a voice-controlled AI assistant prioritizing user privacy and demonstrating practical integration of advanced machine-learning models into usable workflows.'],
+          ['Build focus', 'The project explored voice interaction, automation, and local-assistant logic while keeping privacy at the center of the design direction.'],
+          ['Learning outcome', 'Casper strengthened my ability to connect machine-learning capabilities with real user-facing product use cases.']
+        ],
+        tags: ['LLaMA', 'Voice AI', 'Privacy', 'Automation']
+      },
+      medical: {
+        meta: 'Jun 2023 — Oct 2023 • Health tech',
+        title: 'Medical Report Analyzer',
+        summary: 'A web application for document upload and medication discrepancy analysis.',
+        blocks: [
+          ['Project depth', 'Built an intuitive web application that lets users upload medical documents and receive instant analysis of possible medication discrepancies along with recommended actions.'],
+          ['Build focus', 'The project focused on document workflow, information extraction, practical recommendations, and simplifying medical-report interpretation for users.'],
+          ['Purpose', 'It was one of the early projects that connected web development with real-world problem solving and social utility.']
+        ],
+        tags: ['Web App', 'Document Analysis', 'Health Tech', 'Recommendations']
+      }
+    };
+
+    const modal = document.getElementById('detailModal');
+    const modalMeta = document.getElementById('modalMeta');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalSummary = document.getElementById('modalSummary');
+    const modalMedia = document.getElementById('modalMedia');
+    const modalBlocks = document.getElementById('modalBlocks');
+    const modalTags = document.getElementById('modalTags');
+
+    function openDetail(id){
+      const item = details[id];
+      if(!item) return;
+      modalMeta.textContent = item.meta;
+      modalTitle.textContent = item.title;
+      modalSummary.textContent = item.summary;
+      modalMedia.innerHTML = item.media && item.media.length ? `<div class="modal-media-grid">${item.media.map(media => `<figure class="modal-shot"><img src="${media.src}" alt="${media.alt}"><figcaption>${media.caption || ''}</figcaption></figure>`).join('')}</div>` : '';
+      modalBlocks.innerHTML = item.blocks.map(([heading, body]) => `<section class="modal-block"><h4>${heading}</h4><p>${body}</p></section>`).join('');
+      modalTags.innerHTML = item.tags.map(tag => `<span class="chip">${tag}</span>`).join('');
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDetail(){
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden','true');
+      modalMedia.innerHTML = '';
+      document.body.style.overflow = '';
+    }
+    function overlayClose(event){
+      if(event.target === modal) closeDetail();
+    }
+    function cardKey(event, id){
+      if(event.key === 'Enter' || event.key === ' '){
+        event.preventDefault();
+        openDetail(id);
+      }
+    }
+    function toggleTheme(){
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('portfolio-theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+    }
+
+    function initCollaborativeAnimations(){
+      document.body.classList.add('animations-ready');
+      const animatedItems = document.querySelectorAll('.section-head, .neo-card, .exp-row, .project, .contact-panel, .hero-kicker, .hero-copy, .hero-actions');
+      animatedItems.forEach((item, index) => {
+        item.setAttribute('data-animate', '');
+        item.style.setProperty('--delay', `${Math.min((index % 6) * 70, 350)}ms`);
+      });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('in-view');
+          } else {
+            entry.target.classList.remove('in-view');
+          }
+        });
+      }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+      animatedItems.forEach(item => observer.observe(item));
+
+      const updateScrollMotion = () => {
+        const y = window.scrollY || 0;
+        document.documentElement.style.setProperty('--collab-y', `${Math.min(y * 0.07, 95)}px`);
+      };
+      updateScrollMotion();
+      window.addEventListener('scroll', updateScrollMotion, { passive: true });
+    }
+    initCollaborativeAnimations();
+    document.addEventListener('keydown', (event) => {
+      if(event.key === 'Escape') closeDetail();
+    });
+    if(localStorage.getItem('portfolio-theme') === 'dark'){
+      document.body.classList.add('dark-mode');
+    }
+  </script>
+</body>
+</html>

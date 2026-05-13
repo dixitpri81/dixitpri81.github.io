@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" role="img" aria-label="Animated memoji-style avatar waving hello">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#fff7ec"/>
+      <stop offset="55%" stop-color="#f3dfcf"/>
+      <stop offset="100%" stop-color="#edd5c5" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="skin" x1="92" y1="78" x2="190" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f8c79c"/>
+      <stop offset="1" stop-color="#d99a72"/>
+    </linearGradient>
+    <linearGradient id="hair" x1="86" y1="34" x2="187" y2="116" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7a5739"/>
+      <stop offset="1" stop-color="#3a2418"/>
+    </linearGradient>
+    <linearGradient id="shirt" x1="85" y1="205" x2="218" y2="280" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111827"/>
+      <stop offset="1" stop-color="#333a4d"/>
+    </linearGradient>
+    <filter id="softShadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="15" flood-color="#000" flood-opacity="0.18"/>
+    </filter>
+    <filter id="cheekBlur"><feGaussianBlur stdDeviation="2.5"/></filter>
+    <style>
+      .float{animation:float 4.8s ease-in-out infinite;transform-origin:150px 170px}.hand{animation:wave 1.38s ease-in-out infinite;transform-origin:214px 128px}.blink{animation:blink 5.2s ease-in-out infinite;transform-origin:center}.smile{stroke-dasharray:42;animation:smile 4s ease-in-out infinite}.spark{animation:spark 2.2s ease-in-out infinite}.spark.two{animation-delay:.45s}.spark.three{animation-delay:.9s}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}@keyframes wave{0%,100%{transform:rotate(0deg)}18%{transform:rotate(-14deg)}36%{transform:rotate(16deg)}54%{transform:rotate(-11deg)}72%{transform:rotate(10deg)}}@keyframes blink{0%,93%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}@keyframes smile{0%,100%{stroke-dashoffset:0}50%{stroke-dashoffset:3}}@keyframes spark{0%,100%{opacity:.35;transform:scale(.82)}50%{opacity:1;transform:scale(1.12)}}
+    </style>
+  </defs>
+  <circle cx="150" cy="150" r="132" fill="url(#bg)"/>
+  <ellipse cx="151" cy="271" rx="76" ry="14" fill="#000" opacity=".11"/>
+  <g class="float" filter="url(#softShadow)">
+    <g class="hand">
+      <path d="M216 145c15-8 27-31 25-44-1-8-9-9-13-3-2 3-3 12-6 17 1-13 0-24-5-28-5-3-10 0-10 7v23c-4-12-7-25-13-25-6 0-8 5-6 12l7 27c-6-10-12-17-17-14-5 3-4 9 0 15l16 21c6 8 14 8 22-9Z" fill="url(#skin)" stroke="#b97b58" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M225 99c-2 11-4 20-8 29M207 95c1 12 0 24-2 35M190 103l9 30" fill="none" stroke="#b97b58" stroke-width="2.5" stroke-linecap="round" opacity=".65"/>
+    </g>
+    <path d="M88 271c7-43 26-68 62-68 38 0 60 26 68 68H88Z" fill="url(#shirt)"/>
+    <path d="M123 210c7 19 46 20 55 0" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="94" cy="142" rx="18" ry="24" fill="url(#skin)"/>
+    <ellipse cx="204" cy="142" rx="18" ry="24" fill="url(#skin)"/>
+    <path d="M105 111c2-48 34-71 72-52 23 12 33 31 28 59l-3 52c-3 35-25 58-54 58-30 0-52-23-55-58l-3-30c-2-13 3-23 15-29Z" fill="url(#skin)" stroke="#c18762" stroke-width="2"/>
+    <path d="M89 113c1-42 32-74 65-75 4 18-4 34-25 47 28-7 46-20 54-39 24 12 33 35 29 69-9-19-29-28-62-25-29 3-49 11-61 23Z" fill="url(#hair)"/>
+    <path d="M108 118c10-10 30-14 49-11 25 3 42 11 54 25-1-32-16-59-39-71-2 19-15 33-40 41 8-10 12-21 12-34-23 3-43 22-36 50Z" fill="#5f412b" opacity=".5"/>
+    <g class="blink"><ellipse cx="127" cy="150" rx="9" ry="11" fill="#24201f"/><ellipse cx="173" cy="150" rx="9" ry="11" fill="#24201f"/><circle cx="130" cy="146" r="3" fill="#fff"/><circle cx="176" cy="146" r="3" fill="#fff"/></g>
+    <path d="M112 133c9-7 22-6 30-1M160 132c9-6 23-6 31 2" fill="none" stroke="#3b281c" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="122" cy="170" rx="12" ry="6" fill="#e9858a" opacity=".28" filter="url(#cheekBlur)"/>
+    <ellipse cx="180" cy="170" rx="12" ry="6" fill="#e9858a" opacity=".28" filter="url(#cheekBlur)"/>
+    <path class="smile" d="M132 188c10 12 27 12 38 0" fill="none" stroke="#7e4639" stroke-width="4" stroke-linecap="round"/>
+    <path d="M151 160c-3 10-5 17-1 19 3 2 9 0 12-2" fill="none" stroke="#b87e5d" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g fill="#7c5cff">
+    <circle class="spark" cx="231" cy="64" r="4"/>
+    <circle class="spark two" cx="249" cy="83" r="3" fill="#ffb86b"/>
+    <circle class="spark three" cx="54" cy="86" r="3" fill="#00d4ff"/>
+  </g>
+  <text x="218" y="177" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="900" fill="#161616" opacity=".88">Hi!</text>
+</svg>
