@@ -255,6 +255,8 @@
     .modal-block p{font-size:14px;line-height:1.45;margin:0;color:#707070;font-weight:600;letter-spacing:-.015em}
     .modal-list{margin:0;padding-left:18px;display:grid;gap:8px;color:#707070;font-size:14px;line-height:1.42;font-weight:600}
     .modal-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+    .modal-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+    .modal-actions .btn{text-decoration:none}
     .modal-media{display:grid;gap:16px;margin:0 0 24px}
     .modal-media-grid{display:grid;grid-template-columns:1fr;gap:16px}
     .modal-shot{margin:0;padding:12px;border-radius:26px;background:rgba(255,255,255,.52);border:1px solid rgba(255,255,255,.84);box-shadow:12px 12px 34px rgba(135,135,135,.12), -10px -10px 32px rgba(255,255,255,.72)}
@@ -276,6 +278,8 @@
     body.dark-mode .switch{border-color:#f4f4f3}
     body.dark-mode .switch::before{left:1px;right:auto;background:#f4f4f3}
     body.dark-mode .modal-block{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.12);color:#f4f4f3}
+    body.dark-mode .modal-actions .btn.primary{background:#f4f4f3;color:#121212}
+    body.dark-mode .modal-actions .btn.secondary{background:rgba(255,255,255,.08);color:#f4f4f3;border:1px solid rgba(255,255,255,.12);box-shadow:none}
     body.dark-mode .back-top{background:rgba(28,28,30,.74);border-color:rgba(255,255,255,.14);color:#f4f4f3}
     body.dark-mode .logo-glass, body.dark-mode .footer-logo .logo-glass{background:linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.07) 43%, rgba(255,255,255,.03));border-color:rgba(255,255,255,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.18), inset 0 -1px 0 rgba(0,0,0,.45), 0 18px 34px rgba(0,0,0,.32)}
     body.dark-mode .logo-text, body.dark-mode .footer-logo .logo-text{color:#f4f4f3;text-shadow:0 1px 0 rgba(0,0,0,.4)}
@@ -363,7 +367,7 @@
 <article class="project detail-card" onclick="openDetail('revamp')" onkeydown="cardKey(event,'revamp')" role="button" tabindex="0"><div class="project-media"><img alt="Sustainability project visual" src="assets/revamp_banner.svg"/></div><div class="project-body"><div class="project-label">Sep 2024 — Dec 2024 // Sustainability</div><h3>Revamp</h3><p>Open the project brief for the sustainability problem, lifecycle model, and platform impact.</p><div class="chips"><span class="chip">Sustainability</span><span class="chip">Web Design</span><span class="chip">Lifecycle Tracking</span></div></div></article>
 <article class="project detail-card" onclick="openDetail('smartglasses')" onkeydown="cardKey(event,'smartglasses')" role="button" tabindex="0"><div class="project-media"><img alt="Assistive technology visual" src="assets/smart_glasses_banner.svg"/></div><div class="project-body"><div class="project-label">Apr 2024 — Aug 2024 // Assistive AI</div><h3>AI-Powered Smart Glasses</h3><p>Open the project brief for assistive technology goals, sensor integration, and navigation support.</p><div class="chips"><span class="chip">AI</span><span class="chip">Sensors</span><span class="chip">Object Detection</span></div></div></article>
 <article class="project detail-card" onclick="openDetail('casper')" onkeydown="cardKey(event,'casper')" role="button" tabindex="0"><div class="project-media"><img alt="Interface project visual" src="assets/casper_banner.svg"/></div><div class="project-body"><div class="project-label">Nov 2023 — Mar 2024 // Privacy AI</div><h3>Casper</h3><p>Open the project brief for the privacy-focused assistant concept, LLaMA usage, and automation workflow.</p><div class="chips"><span class="chip">LLaMA</span><span class="chip">Voice AI</span><span class="chip">Automation</span></div></div></article>
-<article class="project detail-card" onclick="openDetail('medical')" onkeydown="cardKey(event,'medical')" role="button" tabindex="0"><div class="project-media"><img alt="Dark workflow visual" src="assets/medical_report_analyzer_banner.svg"/></div><div class="project-body"><div class="project-label">Jun 2023 — Oct 2023 // Health Tech</div><h3>Medical Report Analyzer</h3><p>Open the project brief for document upload flow, discrepancy analysis, and recommendation output.</p><div class="chips"><span class="chip">Web App</span><span class="chip">Document Analysis</span><span class="chip">Health Tech</span></div></div></article>
+<article class="project detail-card" onclick="openDetail('medical')" onkeydown="cardKey(event,'medical')" role="button" tabindex="0"><div class="project-media"><img alt="Dark workflow visual" src="assets/medical_report_analyzer_live.png"/></div><div class="project-body"><div class="project-label">Jun 2023 — Oct 2023 // Health Tech</div><h3>Medical Report Analyzer</h3><p>Open the project brief for document upload flow, discrepancy analysis, and recommendation output.</p><div class="chips"><span class="chip">Web App</span><span class="chip">Document Analysis</span><span class="chip">Health Tech</span></div></div></article>
 </div>
 </section>
 <footer class="page-footer" aria-label="Page footer">
@@ -395,6 +399,7 @@
 <div class="modal-media" id="modalMedia"></div>
 <div class="modal-grid" id="modalBlocks"></div>
 <div class="modal-tags" id="modalTags"></div>
+<div class="modal-actions" id="modalActions"></div>
 </article>
 </div>
 
@@ -637,12 +642,18 @@
         meta: 'Jun 2023 — Oct 2023 • Health tech',
         title: 'Medical Report Analyzer',
         summary: 'A web application for document upload and medication discrepancy analysis.',
+        media: [
+          {src: 'assets/medical_report_analyzer_live.png', alt: 'RepoCare medical report analyzer live interface preview', caption: 'Live interface preview of the Medical Report Analyzer / RepoCare web application.'}
+        ],
         blocks: [
           ['Project depth', 'Built an intuitive web application that lets users upload medical documents and receive instant analysis of possible medication discrepancies along with recommended actions.'],
           ['Build focus', 'The project focused on document workflow, information extraction, practical recommendations, and simplifying medical-report interpretation for users.'],
           ['Purpose', 'It was one of the early projects that connected web development with real-world problem solving and social utility.']
         ],
-        tags: ['Web App', 'Document Analysis', 'Health Tech', 'Recommendations']
+        tags: ['Web App', 'Document Analysis', 'Health Tech', 'Recommendations'],
+        links: [
+          {label: 'Open Live Project', href: 'https://medical-report-analyzer-sx6b.onrender.com'}
+        ]
       }
     };
 
@@ -653,6 +664,7 @@
     const modalMedia = document.getElementById('modalMedia');
     const modalBlocks = document.getElementById('modalBlocks');
     const modalTags = document.getElementById('modalTags');
+    const modalActions = document.getElementById('modalActions');
 
     function openDetail(id){
       const item = details[id];
@@ -663,6 +675,7 @@
       modalMedia.innerHTML = item.media && item.media.length ? `<div class="modal-media-grid">${item.media.map(media => `<figure class="modal-shot"><img src="${media.src}" alt="${media.alt}"><figcaption>${media.caption || ''}</figcaption></figure>`).join('')}</div>` : '';
       modalBlocks.innerHTML = item.blocks.map(([heading, body]) => `<section class="modal-block"><h4>${heading}</h4><p>${body}</p></section>`).join('');
       modalTags.innerHTML = item.tags.map(tag => `<span class="chip">${tag}</span>`).join('');
+      modalActions.innerHTML = item.links && item.links.length ? item.links.map(link => `<a class="btn primary" href="${link.href}" target="_blank" rel="noopener noreferrer">${link.label}</a>`).join('') : '';
       modal.classList.add('active');
       modal.setAttribute('aria-hidden','false');
       document.body.style.overflow = 'hidden';
@@ -671,6 +684,7 @@
       modal.classList.remove('active');
       modal.setAttribute('aria-hidden','true');
       modalMedia.innerHTML = '';
+      modalActions.innerHTML = '';
       document.body.style.overflow = '';
     }
     function overlayClose(event){
